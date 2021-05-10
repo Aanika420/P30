@@ -9,6 +9,7 @@ var stand1,stand2;
 var ball;
 var slingShot;
 var polygon_img;
+var gameState = "sling";
 function preload(){
   polygon_img=loadImage("polygon.png");
 }
@@ -22,7 +23,7 @@ function setup() {
   stand2 = new Stand(700,200,200,10);
 
   //polygon
-  polygon1 = new Polygon(100,200,50,50);
+  polygon1 = new Polygon(150,100,50,50);
 
   //level one
   block1 = new Block(300,275,30,40);
@@ -46,7 +47,7 @@ function setup() {
   //top
   block16 = new Block(390,155,30,40);
 
-  slingshot = new SlingShot(polygon1.body,{x:200, y:50});
+  slingshot = new SlingShot(polygon1.body,{x:150, y:50});
   
 
 }
@@ -88,10 +89,19 @@ function draw() {
 }
 
 function mouseDragged(){
+  if(gameState!=="launched"){
   Matter.Body.setPosition(polygon1.body, {x: mouseX , y: mouseY});
+  }
 }
 
 
 function mouseReleased(){
   slingshot.fly();
+  gameState = "launched";
+}
+
+function keyPressed(){
+  if(keyCode === 32){
+    slingshot.attatch(polygon1.body);
+  }
 }
