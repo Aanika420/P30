@@ -54,6 +54,8 @@ function setup() {
 function draw() {
   background(56,44,44); 
  
+  text("drag the polygon to destroy the blocks",300,50);
+
   textSize(20);
   fill("lightyellow");
   
@@ -83,7 +85,7 @@ function draw() {
   block13.display();
   block14.display();
   block15.display();
-  fill("grey");
+  fill("orange");
   block16.display();
 
 }
@@ -93,7 +95,6 @@ function mouseDragged(){
   Matter.Body.setPosition(polygon1.body, {x: mouseX , y: mouseY});
   }
 }
-
 
 function mouseReleased(){
   slingshot.fly();
