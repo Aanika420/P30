@@ -103,6 +103,6 @@ function mouseReleased(){
 
 function keyPressed(){
   if(keyCode === 32){
-    slingshot.attatch(polygon1.body);
+    slingshot.attach(polygon1.body);
   }
 }
